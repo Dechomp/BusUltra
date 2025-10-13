@@ -1,0 +1,63 @@
+Preço
+São Paulo  10
+Barueri  15
+Santana de Parnaíba 20
+Campos do Jordão 25
+Rio de Janeiro 30
+
+SP com Santana = 20 + 10 * 2 = 60
+SP com Campos = 10 + 25 * 2 = 70
+SP com Rio = 10 + 30 * 2 = 80
+SP com Barueri  = 15 + 10 * 2 = 50 if fistancia <= 10 = - 40
+
+Barueri com Santana = 15 + 20 * 2 = 70 if distancia<= 5 - 60 = 10
+Barueri com Campos = 15 + 25 * 2 = 80
+Barueri com Rio = 15 + 30 * 2 = 90
+
+Santana com Campos = 20 + 25 * 2 = 90
+Santana com Rio = 20 + 30 * 2 = 100
+
+Campos com Rio = 25 + 30 * 2 = 110
+
+Distancia (Tudo depois positivo), ignorar
+Santana de Parnaíba 0
+Barueri  5
+São Paulo  15
+Campos do Jordão 25
+Rio de Janeiro 40
+
+Sant - B = -5
+Sant - Sp = -15
+Sant - C = -25
+Sant -Rio = -40
+
+
+B - Sp = - 10
+B - C = 20
+B - Rio = -35
+
+Sp - C = -10
+Sp - Rio = -25
+
+C - rio = - 15
+
+Tempo (Todos positivos depois)
+Santana de Parnaíba 0
+Barueri  15
+São Paulo  80
+Campos do Jordão 210
+Rio de Janeiro 500
+
+Sant - B = 0 -15 = - 15
+Sant - Sp = 0 - 80 = -80
+Sant - Campos = 0 - 210 = -210
+Sant - Rio = 0 - 500 = -500
+
+B - SP = 15 - 80 = - 65
+B - C = 15 - 210 = - 195
+B - Rio = 15 - 500 = - 485
+
+SP - C = 80 * 210 = - 130
+SP - Rio = 80 - 50 = - 420
+
+C - Rio = 290

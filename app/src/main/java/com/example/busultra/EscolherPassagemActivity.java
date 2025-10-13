@@ -23,6 +23,8 @@ public class EscolherPassagemActivity extends AppCompatActivity {
 
 
 
+    int tempoChegada = 0;
+    int tempoPartida = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,35 @@ public class EscolherPassagemActivity extends AppCompatActivity {
             tvOrigem.setText(Global.origem);
             tvDestino.setText(Global.destino);
             tvPreco.setText("R$ " + Global.preco);
-            tvHorarioPartida.setText("Teste " + Global.distancia);
+            int minutos = (Global.tempo* (i + 1)) % 60 ;
+
+            int horas = 0;
+
+            if (Global.tempo * (i + 1) >= 60){
+               horas = (Global.tempo - minutos) / 60;
+            }
+
+
+
+            String horaTexto = "", minutoTexto = "";
+            if (horas < 10){
+                horaTexto = "0" + horas;
+            }
+            else{
+                horaTexto = "" + horas;
+            }
+            if (minutos < 10){
+                minutoTexto = "0" + minutos;
+            }
+            else{
+                minutoTexto = "" + minutos;
+
+            }
+
+            tvHorarioChegada.setText(horaTexto + ":" + minutoTexto);
+
+
+
 
 
 

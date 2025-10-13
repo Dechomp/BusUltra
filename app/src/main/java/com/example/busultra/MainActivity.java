@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         btBuscarPassagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Global.distancia = 0;
+                Global.tempo = 0;
                 Global.preco = 0;
 
                 //Primeiro vai verificar campos vazios ou não escolhidos
@@ -194,66 +194,62 @@ public class MainActivity extends AppCompatActivity {
 
                     if (origem == "Santana de Parnaíba"){
                         Global.preco = 20;
-                        Global.distancia = 0;
+                        Global.tempo = 0;
                     }
                     else if (origem == "Barueri"){
                         Global.preco = 15;
-                        Global.distancia = 5;
+                        Global.tempo = 15;
                     }
                     else if (origem == "São Paulo"){
                         Global.preco = 10;
-                        Global.distancia = 15;
+                        Global.tempo = 80;
                     }
                     else if (origem == "Campos do Jordão") {
                         Global.preco = 25;
-                        Global.distancia = 25;
+                        Global.tempo = 210;
                     }
                     else if (origem == "Rio de Janeiro") {
                         Global.preco = 30;
-                        Global.distancia = 40;
+                        Global.tempo = 500;
                     }
-                    Toast.makeText(MainActivity.this, "Distancia: " + Global.distancia , Toast.LENGTH_SHORT).show();
 
+                    Toast.makeText(MainActivity.this, "Tempo: " + Global.tempo, Toast.LENGTH_SHORT).show();
                     if (destino == "Santana de Parnaíba"){
                         Global.preco += 20;
-                        Global.distancia -= 0;
+                        Global.tempo -= 0;
                     }
                     else if (destino == "Barueri"){
                         Global.preco += 15;
-                        Global.distancia -= 5;
+                        Global.tempo -= 15;
                     }
                     else if (destino == "São Paulo"){
                         Global.preco += 10;
-                        Global.distancia -= 15;
+                        Global.tempo -= 80;
                     }
                     else if (destino == "Campos do Jordão") {
                         Global.preco += 25;
-                        Global.distancia -= 25;
+                        Global.tempo -= 210;
                     }
                     else if (destino == "Rio de Janeiro") {
                         Global.preco += 30;
-                        Global.distancia -= 40;
+                        Global.tempo -= 500;
                     }
 
-                    if (Global.distancia < 0){
-                        Global.distancia *= -1;
+                    if (Global.tempo < 0){
+                        Global.tempo *= -1;
                     }
-                    Toast.makeText(MainActivity.this, "Distancia: " + Global.distancia , Toast.LENGTH_SHORT).show();
+
                     Global.preco *= 2;
 
+                    Toast.makeText(MainActivity.this, "Tempo: " + Global.tempo, Toast.LENGTH_SHORT).show();
 
-                    if(Global.distancia <= 5){
+                    if(Global.tempo <= 20){
                         Global.preco -= 60;
                     }
-                    else if (Global.distancia <= 10) {
+                    else if (Global.tempo <= 80) {
                         Global.preco -= 40;
                     }
-                    else if (Global.distancia <= 15) {
-                        Global.preco -= 20;
-                    }
 
-                    Toast.makeText(MainActivity.this, "Distancia: " + Global.distancia , Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MainActivity.this, "Preço: " + Global.preco , Toast.LENGTH_SHORT).show();
 
                     //Mandar para a próxima tela
                     Intent telaEscolherPassagem;
