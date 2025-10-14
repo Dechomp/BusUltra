@@ -41,7 +41,7 @@ public class EscolherPassagemActivity extends AppCompatActivity {
         //Teste de criação de containers usando um inflater
         LayoutInflater inflater = LayoutInflater.from(this);
         int i = 0;
-        while (tempoPartida < 1080) {
+        while (tempoPartida < 60 * 25) {
 
             //Clona o layout
             ConstraintLayout blocoPassagem = (ConstraintLayout) inflater.inflate(R.layout.activity_layout_containers, container, false);
@@ -74,6 +74,9 @@ public class EscolherPassagemActivity extends AppCompatActivity {
             if(horas < 10){
                 horasTexto = "0" + horas;
             }
+            else if (horas >= 24){
+                break;
+            }
 
             minutosTexto = "" + minutos;
 
@@ -94,6 +97,18 @@ public class EscolherPassagemActivity extends AppCompatActivity {
             if(horas < 10){
                 horasTexto = "0" + horas;
             }
+            else if (horas >= 24) {
+                horas %= 24;
+                if(horas < 10){
+                    horasTexto = "No outro dia às 0" + horas;
+                    tvHorarioChegada.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+                }
+                else{
+                    horasTexto = "No outro dia às" + horas;
+                    tvHorarioChegada.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+                }
+            }
+
 
             minutosTexto = "" + minutos;
 
