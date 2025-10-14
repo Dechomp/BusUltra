@@ -25,6 +25,8 @@ public class EscolherPassagemActivity extends AppCompatActivity {
 
     int tempoChegada = 0;
     int tempoPartida = 0;
+    int tempoTotal = Global.tempo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,8 @@ public class EscolherPassagemActivity extends AppCompatActivity {
 
         //Teste de criação de containers usando um inflater
         LayoutInflater inflater = LayoutInflater.from(this);
-        for(int i = 0; i < 10; i++) {
+        int i = 0;
+        while (tempoPartida < 1080) {
 
             //Clona o layout
             ConstraintLayout blocoPassagem = (ConstraintLayout) inflater.inflate(R.layout.activity_layout_containers, container, false);
@@ -57,11 +60,57 @@ public class EscolherPassagemActivity extends AppCompatActivity {
             Button btEscolherPassagem = blocoPassagem.findViewById(R.id.btEscolherPassagem);
             View diDivisor = blocoPassagem.findViewById(R.id.diDivisor);
 
+            tempoPartida = (tempoTotal * i);
+            int minutos = tempoPartida % 60;
+
+            int horas = 0;
+
+            if (tempoPartida >= 60) {
+                horas = (tempoPartida - minutos) / 60;
+            }
+            String horasTexto = "", minutosTexto = "";
+
+            horasTexto = "" + horas;
+            if(horas < 10){
+                horasTexto = "0" + horas;
+            }
+
+            minutosTexto = "" + minutos;
+
+            if(minutos < 10){
+                minutosTexto = "0" + minutos;
+            }
+
+            tvHorarioPartida.setText(horasTexto + ":" + minutosTexto);
+
+            i ++;
+
+            tempoChegada = tempoTotal * i;
+
+            minutos = tempoChegada % 60;
+            horas = (tempoChegada - minutos) / 60;
+
+            horasTexto = "" + horas;
+            if(horas < 10){
+                horasTexto = "0" + horas;
+            }
+
+            minutosTexto = "" + minutos;
+
+            if(minutos < 10){
+                minutosTexto = "0" + minutos;
+            }
+
+            tvHorarioChegada.setText(horasTexto + ":" + minutosTexto);
+
+
+
 
             tvOrigem.setText(Global.origem);
             tvDestino.setText(Global.destino);
             tvPreco.setText("R$ " + Global.preco);
-            int minutos = (Global.tempo* (i + 1)) % 60 ;
+
+            /*int minutos = (tempoTotal * (i + 1)) % 60 ;
 
             int horas = 0;
 
@@ -85,8 +134,8 @@ public class EscolherPassagemActivity extends AppCompatActivity {
                 minutoTexto = "" + minutos;
 
             }
-
-            tvHorarioChegada.setText(horaTexto + ":" + minutoTexto);
+            */
+            //tvHorarioPartida.setText(horaTexto + ":" + minutoTexto);
 
 
 
@@ -98,8 +147,7 @@ public class EscolherPassagemActivity extends AppCompatActivity {
                   @Override
                   public void onClick(View v) {
                       try{
-
-                       Toast.makeText(v.getContext(), "Passagem número " + numBotao + " escolhida",Toast.LENGTH_SHORT).show();
+                          Toast.makeText(v.getContext(), "Passagem número " + numBotao + " escolhida",Toast.LENGTH_SHORT).show();
                       }
                       catch (Exception e){
                           Toast.makeText(v.getContext(), "Erro ao escolher a passagem" + e.getMessage(),Toast.LENGTH_SHORT).show();
