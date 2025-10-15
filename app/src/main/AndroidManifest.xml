@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BusUltra">
         <activity
+            android:name=".EscolherBancoActivity"
+            android:exported="false" />
+        <activity
             android:name=".LayoutContainersActivity"
             android:exported="false" />
         <activity

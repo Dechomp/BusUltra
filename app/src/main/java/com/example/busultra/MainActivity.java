@@ -188,10 +188,11 @@ public class MainActivity extends AppCompatActivity {
 
                 //Mandar as informações para a próxima tela
                 else{
-
+                    //Salvar a origem e destino
                     Global.origem = origem;
                     Global.destino = destino;
 
+                    //Definiir os valores(Baseado no arquivo logica preco distancia tempo)
                     if (origem == "Santana de Parnaíba"){
                         Global.preco = 20;
                         Global.tempo = 0;
@@ -213,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                         Global.tempo = 500;
                     }
 
-                    Toast.makeText(MainActivity.this, "Tempo: " + Global.tempo, Toast.LENGTH_SHORT).show();
+                    //Calcular o tempo e o preço
                     if (destino == "Santana de Parnaíba"){
                         Global.preco += 20;
                         Global.tempo -= 0;
@@ -239,10 +240,11 @@ public class MainActivity extends AppCompatActivity {
                         Global.tempo *= -1;
                     }
 
+                    //Finaliza o preço inicial
                     Global.preco *= 2;
 
-                    Toast.makeText(MainActivity.this, "Tempo: " + Global.tempo, Toast.LENGTH_SHORT).show();
 
+                    //Desconto dependendo do tempo
                     if(Global.tempo <= 20){
                         Global.preco -= 60;
                     }
