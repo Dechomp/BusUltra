@@ -62,7 +62,7 @@
         android:textAlignment="viewStart"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

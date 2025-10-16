@@ -59,6 +59,7 @@ public class EscolherPassagemActivity extends AppCompatActivity {
 
             //Deini realmente os parâmetros
             params.setMargins(0,0,0,16);
+
             blocoPassagem.setLayoutParams(params);
 
 
