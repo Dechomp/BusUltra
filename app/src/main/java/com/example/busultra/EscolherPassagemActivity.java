@@ -241,7 +241,7 @@ public class EscolherPassagemActivity extends AppCompatActivity {
                           telaEscolherBanco = new Intent(EscolherPassagemActivity.this, EscolherBancoActivity.class);
                           startActivity(telaEscolherBanco);
 
-                          Toast.makeText(v.getContext(), "Passagem número " + numBotao + 1 + " escolhida",Toast.LENGTH_SHORT).show();
+                          Toast.makeText(v.getContext(), "Passagem número " + numBotao + " escolhida",Toast.LENGTH_SHORT).show();
                       }
                       //Caso de erro
                       catch (Exception e){

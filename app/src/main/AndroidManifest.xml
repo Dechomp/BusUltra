@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BusUltra">
         <activity
-            android:name=".EscolherBancoActivity"
+            android:name=".EscolherPassagemActivity"
             android:exported="false" />
         <activity
             android:name=".LayoutContainersActivity"
@@ -24,10 +24,10 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".EscolherPassagemActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".EscolherBancoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
