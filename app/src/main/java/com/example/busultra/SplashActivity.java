@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         imgGif.getSettings().setUseWideViewPort(true);
         imgGif.setInitialScale(1);
 
-        imgGif.loadUrl("file:///android_res/drawable/gamestudandologo.gif");
+        imgGif.loadUrl("file:///android_res/drawable/busultralogo.gif");
 
 
         Handler h = new Handler();
@@ -39,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
                 exibirLoginActivy();
 
             }
-        }, 6300);
+        }, 1300);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

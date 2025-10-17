@@ -1,10 +1,12 @@
 package com.example.busultra;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import androidx.gridlayout.widget.GridLayout;
 
@@ -18,6 +20,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -27,14 +30,29 @@ public class EscolherBancoActivity extends AppCompatActivity {
 
     //Definição das variáveis e componentes
     GridLayout grLugares;
+
+    TextView tvPrecoTotal;
+
+    Button btConfirmarLugares, btVoltarEscolherBanco;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_escolher_banco);
 
+        //Relacionando texto
+        tvPrecoTotal = findViewById(R.id.tvPrecoTotal);
+
+
         //Relaciona ao lugar certo
         grLugares = findViewById(R.id.grLugares);
+
+        //Relaciona ao botão
+        btConfirmarLugares = findViewById(R.id.btConfirmarLugares);
+        btVoltarEscolherBanco = findViewById(R.id.btVoltarEscolherBanco);
+
+
+
 
         //Pego o tamanho das  colunas do GridLayout, pois assim, casoo eu queira aumentar, já está pré configurado
         int colunas = grLugares.getColumnCount();
@@ -75,6 +93,12 @@ public class EscolherBancoActivity extends AppCompatActivity {
         AtomicInteger assentosEscolhidos = new AtomicInteger(0);
 
         int numeroAssento = 1;
+
+
+        ArrayList<String> bancoEscolhidos = new ArrayList<>();
+
+
+
 
         //Laço de repetição para criar os lugares
         //Primeiro as fileiras
@@ -264,6 +288,9 @@ public class EscolherBancoActivity extends AppCompatActivity {
                                 //Selecionna a caixa
                                 assento.setChecked(true);
 
+                                bancoEscolhidos.add(idetificador);
+                                //Global.numBancos[]
+
                                 //Mostra que foi selecionado
                                 Toast.makeText(EscolherBancoActivity.this, "Assento " + idetificador + " selecionado", Toast.LENGTH_SHORT).show();
                             }
@@ -273,12 +300,16 @@ public class EscolherBancoActivity extends AppCompatActivity {
                                 //Retira da lista
                                 assentosEscolhidos.decrementAndGet();
 
+                                bancoEscolhidos.remove(idetificador);
+
                                 //Volta para a cor padrão
                                 assento.setButtonTintList(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
 
                             }
                             //Mostra quantos bancos foram selecionados no total
                             Toast.makeText(EscolherBancoActivity.this, "Quantidade de assentos escolhidos: " + assentosEscolhidos, Toast.LENGTH_SHORT).show();
+
+                            tvPrecoTotal.setText("" + Global.preco * assentosEscolhidos.get());
                         }
 
                     });
@@ -298,7 +329,45 @@ public class EscolherBancoActivity extends AppCompatActivity {
             }
         }
 
+        btConfirmarLugares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(assentosEscolhidos.get() == 0){
+                    Toast.makeText(EscolherBancoActivity.this, "Nenhum banco selecionado, selecione ao menos 1", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Global.numPassageiros = assentosEscolhidos.get();
 
+                    Intent telaEscolherPassageiros;
+
+                    Global.nomePassageiros = new String[Global.numPassageiros];
+                    Global.documentos = new String[Global.numPassageiros];
+                    Global.numBancos = new String[Global.numPassageiros];
+
+
+
+                    for(int i  = 0; i < Global.numPassageiros; i++){
+                        Global.nomePassageiros[i] = "Fulano" + i;
+                        Global.documentos[i] = "Documento" + (i + 1);
+                        //Global.numBancos[i] = "" + (i + 1);
+                    }
+
+                    for (int i = 0; i < bancoEscolhidos.size(); i++){
+                        Global.numBancos[i] = bancoEscolhidos.get(i);
+                    }
+
+                    telaEscolherPassageiros = new Intent(EscolherBancoActivity.this, EscolherPassageirosActivity.class);
+                    startActivity(telaEscolherPassageiros);
+                }
+            }
+        });
+
+        btVoltarEscolherBanco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

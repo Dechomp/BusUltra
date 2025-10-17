@@ -16,6 +16,20 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
+            <Button
+                android:id="@+id/btVoltarEscolherBanco"
+                android:layout_width="61dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="#0003A9F4"
+                android:textColor="#03A9F4"
+                app:icon="@android:drawable/ic_media_rew"
+                app:iconTint="#03A9F4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
@@ -130,6 +144,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Escolha os bancos abaixo: \nGuia:"
                 android:textAlignment="center"
+                android:textColor="#03A9F4"
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="TextView"
+                android:text="0,00"
                 android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.959"
@@ -174,7 +189,7 @@
                 android:text="R$: "
                 android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintHorizontal_bias="0.647"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
